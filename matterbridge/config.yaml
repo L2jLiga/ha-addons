@@ -9,8 +9,6 @@ init: false
 arch:
   - i386
   - amd64
-  - armhf
-  - armv7
   - aarch64
 ports:
   3000/tcp: 3000
