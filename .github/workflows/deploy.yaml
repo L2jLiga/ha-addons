@@ -14,6 +14,6 @@ on:
 
 jobs:
   workflows:
-    uses: L2jLiga/ha-addons/.github/workflows/addon-deploy.yaml@main
+    uses: L2jLiga/ha-addons/.github/workflows/addon-deploy.yaml@master
     secrets:
       DISPATCH_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
