@@ -13,17 +13,17 @@ on:
         required: false
         type: string
       repository:
-        default: "ha-addons"
+        default: "ha-addons-built"
         description: The name of the stable repository
         required: false
         type: string
       repository_edge:
-        default: "repository-edge"
+        default: "ha-addons-built"
         description: The name of the edge repository
         required: false
         type: string
       repository_beta:
-        default: "repository-beta"
+        default: "ha-addons-built"
         description: The name of the beta repository
         required: false
         type: string
@@ -195,6 +195,7 @@ jobs:
       - name: 🚀 Dispatch repository updater update signal
         uses: peter-evans/repository-dispatch@v3.0.0
         with:
+          token: ${{ secrets.DISPATCH_TOKEN }}
           repository: ${{ github.repository_owner }}/${{ inputs.repository_edge }}
           event-type: update
           client-payload: >
@@ -220,6 +221,7 @@ jobs:
       - name: 🚀 Dispatch repository updater update signal
         uses: peter-evans/repository-dispatch@v3.0.0
         with:
+          token: ${{ secrets.DISPATCH_TOKEN }}
           repository: ${{ github.repository_owner }}/${{ inputs.repository_beta }}
           event-type: update
           client-payload: >
@@ -243,6 +245,7 @@ jobs:
       - name: 🚀 Dispatch repository updater update signal
         uses: peter-evans/repository-dispatch@v3.0.0
         with:
+          token: ${{ secrets.DISPATCH_TOKEN }}
           repository: ${{ github.repository_owner }}/${{ inputs.repository }}
           event-type: update
           client-payload: >
