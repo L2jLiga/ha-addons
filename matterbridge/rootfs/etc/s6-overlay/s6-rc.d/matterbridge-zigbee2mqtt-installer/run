@@ -1,0 +1,32 @@
+#!/command/with-contenv bashio
+# shellcheck shell=bash
+# ==============================================================================
+# Home Assistant Community Add-on: Example
+# Example init script, runs before any other service
+# ==============================================================================
+
+bashio::log.info "Prepare MatterBridge for start"
+
+bashio::log.info "Linking addon config"
+mkdir -p /addon_config/.matterbridge
+ln -s /addon_config/.matterbridge /root/.matterbridge
+
+bashio::log.info "Adding Zigbee2MQTT plugin to MatterBridge"
+cd /root/MatterBridge || exit
+npx matterbridge -add matterbridge-zigbee2mqtt
+
+bashio::log.info "Configuring Zigbee2MQTT plugin"
+cat <<EOF | tee /root/.matterbridge/matterbridge-zigbee2mqtt.config.json
+{
+  "name": "matterbridge-zigbee2mqtt",
+  "type": "DynamicPlatform",
+  "unregisterOnShutdown": false,
+  "host": "$(bashio::config "host")",
+  "port": $(bashio::config "port"),
+  "topic": "$(bashio::config "topic")",
+  "username": "$(bashio::config "username")",
+  "password": "$(bashio::config "password")",
+  "whiteList": $(bashio::config "whiteList"),
+  "blackList": $(bashio::config "blackList")
+}
+EOF

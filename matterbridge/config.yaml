@@ -1,0 +1,39 @@
+---
+name: MatterBridge Zigbee2MQTT
+version: dev
+slug: matterbridge-zigbee2mqtt
+description: MatterBridge with Zigbee2MQTT plugin integration
+url: https://github.com/l2jliga/ha-addons
+codenotary: l2jliga@gmail.com
+init: false
+arch:
+  - i386
+  - amd64
+  - armhf
+  - armv7
+  - aarch64
+ports:
+  3000/tcp: 3000
+ports_description:
+  3000/tcp: Web UI
+options:
+  host: localhost
+  port: 1883
+  topic: zigbee2mqtt
+  username: zigbee2mqtt
+  password: zigbee2mqtt
+  whitelist: "[]"
+  blacklist: "[]"
+map:
+  - addon_config:rw
+schema:
+  host: str
+  port: int
+  topic: str
+  username: str
+  password: str
+  whitelist: str
+  blacklist: str
+
+# Required to expose matter ???
+host_network: true
