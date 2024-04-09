@@ -11,10 +11,6 @@ bashio::log.info "Linking addon config"
 mkdir -p /addon_config/.matterbridge
 ln -s /addon_config/.matterbridge /root/.matterbridge
 
-bashio::log.info "Adding Zigbee2MQTT plugin to MatterBridge"
-cd /root/MatterBridge || exit
-npx matterbridge -add matterbridge-zigbee2mqtt
-
 bashio::log.info "Configuring Zigbee2MQTT plugin"
 cat <<EOF | tee /root/.matterbridge/matterbridge-zigbee2mqtt.config.json
 {
@@ -30,3 +26,7 @@ cat <<EOF | tee /root/.matterbridge/matterbridge-zigbee2mqtt.config.json
   "blackList": $(bashio::config "blackList")
 }
 EOF
+
+bashio::log.info "Adding Zigbee2MQTT plugin to MatterBridge"
+cd /root/MatterBridge || exit
+npx matterbridge -add matterbridge-zigbee2mqtt

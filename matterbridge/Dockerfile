@@ -20,11 +20,9 @@ RUN mkdir /root/MatterBridge
 WORKDIR /root/MatterBridge
 
 # hadolint ignore=DL3003
-RUN git clone https://github.com/Luligu/matterbridge-zigbee2mqtt.git && \
+RUN git clone --depth 1 --branch v2.0.6 https://github.com/Luligu/matterbridge-zigbee2mqtt.git && \
     cd matterbridge-zigbee2mqtt && \
-    git reset --hard de60a560c3bac39af7d8c3ce50afcd6e5bfde6b1 && \
-	npm install && npm install --save-dev matterbridge@1.2.5 && \
-	npm run build
+	npm install
 
 # Build arguments
 ARG BUILD_ARCH
