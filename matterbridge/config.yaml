@@ -20,8 +20,8 @@ options:
   topic: zigbee2mqtt
   username: zigbee2mqtt
   password: zigbee2mqtt
-  whitelist: "[]"
-  blacklist: "[]"
+  whiteList: []
+  blackList: []
 map:
   - addon_config:rw
 schema:
@@ -30,6 +30,8 @@ schema:
   topic: str
   username: str
   password: str
-  whitelist: str
-  blacklist: str
+  whitelist:
+    - "str"
+  blacklist:
+    - "str"
 host_network: true
