@@ -13,7 +13,7 @@ RUN apk add --no-cache \
 	icu-data-full=74.1-r0
 
 # Install MatterBridge
-RUN npm install -g matterbridge@1.2.5 full-icu@1.5.0
+RUN npm install -g matterbridge@1.2.5  matterbridge-zigbee2mqtt@2.0.6 full-icu@1.5.0
 
 # Build arguments
 ARG BUILD_ARCH
