@@ -29,5 +29,5 @@ EOF
 
 bashio::log.info "Adding Zigbee2MQTT plugin to MatterBridge"
 mkdir -p /root/MatterBridge
-cd /root/MatterBridge || exit
-npx matterbridge -add matterbridge\-zigbee2mqtt
+cd /usr/local/lib/node_modules || exit
+npx matterbridge -add matterbridge-zigbee2mqtt
