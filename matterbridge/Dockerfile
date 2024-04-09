@@ -10,9 +10,10 @@ RUN apk add --no-cache \
     git=2.43.0-r0 \
     nodejs=20.12.1-r0 \
     npm=10.2.5-r0
+	icu-data-full=74.1-r0
 
 # Install MatterBridge
-RUN npm install -g matterbridge@1.2.5
+RUN npm install -g matterbridge@1.2.5 full-icu@1.5.0
 
 # Install MatterBridge Zigbee2MQTT plugin
 RUN mkdir /root/MatterBridge
