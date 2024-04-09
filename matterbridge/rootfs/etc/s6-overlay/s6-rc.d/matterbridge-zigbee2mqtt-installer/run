@@ -9,10 +9,10 @@ bashio::log.info "Prepare MatterBridge for start"
 
 bashio::log.info "Linking addon config"
 mkdir -p /addon_config/.matterbridge
-ln -s /addon_config/.matterbridge /root/.matterbridge
+ln -s /config/.matterbridge /root/.matterbridge
 
 mkdir -p /addon_config/Matterbridge
-ln -s /addon_config/Matterbridge /root/Matterbridge
+ln -s /config/Matterbridge /root/Matterbridge
 
 bashio::log.info "Configuring Zigbee2MQTT plugin"
 cat <<EOF | tee /root/.matterbridge/matterbridge-zigbee2mqtt.config.json
