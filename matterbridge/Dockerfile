@@ -9,7 +9,7 @@ COPY rootfs /
 RUN apk add --no-cache \
     git=2.43.0-r0 \
     nodejs=20.12.1-r0 \
-    npm=10.2.5-r0
+    npm=10.2.5-r0 \
 	icu-data-full=74.1-r0
 
 # Install MatterBridge
