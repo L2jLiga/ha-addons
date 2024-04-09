@@ -15,15 +15,6 @@ RUN apk add --no-cache \
 # Install MatterBridge
 RUN npm install -g matterbridge@1.2.5 full-icu@1.5.0
 
-# Install MatterBridge Zigbee2MQTT plugin
-RUN mkdir /root/MatterBridge
-WORKDIR /root/MatterBridge
-
-# hadolint ignore=DL3003
-RUN git clone --depth 1 --branch v.2.0.6 https://github.com/Luligu/matterbridge-zigbee2mqtt.git && \
-    cd matterbridge-zigbee2mqtt && \
-	npm install
-
 # Build arguments
 ARG BUILD_ARCH
 ARG BUILD_DATE
