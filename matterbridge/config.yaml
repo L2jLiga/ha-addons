@@ -31,7 +31,7 @@ schema:
   username: str
   password: str
   whitelist:
-    - "str"
+    - "str?"
   blacklist:
-    - "str"
+    - "str?"
 host_network: true
