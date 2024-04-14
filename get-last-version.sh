@@ -23,5 +23,3 @@ version=$(npx -y semver "$latest_version" -i "$increment" | tail -1)
   git log "$latest_version"..HEAD --oneline
   echo "EOF"
 } >>"$GITHUB_OUTPUT"
-
-cat "$GITHUB_OUTPUT"
