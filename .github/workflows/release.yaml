@@ -18,9 +18,29 @@ jobs:
       - workflows
     runs-on: ubuntu-latest
     steps:
+      - id: version
+        name: Detect version type
+        run: |
+          local latest_version=`git tag | tail -1`
+          local is_major=`git log $latest_version..HEAD  --oneline | cut -d ' ' -f2 | grep '!:' | wc --lines`
+          local is_minor=`git log $latest_version..HEAD  --oneline | cut -d ' ' -f2 | grep 'feat:' | wc --lines`
+          
+          local output='PATCH'
+          
+          if ! [ $is_major = '0' ]
+          then
+            output = 'MAJOR'
+          else
+            if ! [ $is_minor = '0' ]
+              output = 'MINOR'
+            fi
+          fi
+          
+          echo "semver=$output" >> $GITHUB_OUTPUT
+
       - name: Automatic Semver Release
         uses: rui-costa/action-automatic-semver-releases@1.1.1
         with:
           TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-          SEMVER: "PATCH"
+          SEMVER: ${{ steps.version.outputs.semver }}
           LABEL: ""
