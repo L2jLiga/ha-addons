@@ -1,4 +1,3 @@
----
 name: CI
 
 # yamllint disable-line rule:truthy
@@ -14,3 +13,14 @@ on:
 jobs:
   workflows:
     uses: L2jLiga/ha-addons/.github/workflows/addon-ci.yaml@master
+
+  release:
+    needs:
+      - workflows
+    runs-on: ubuntu-latest
+    steps:
+      - name: Automatic Semver Release
+        uses: rui-costa/action-automatic-semver-releases@1.1.1
+        with:
+          TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+          SEMVER: PATCH
