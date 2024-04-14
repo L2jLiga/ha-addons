@@ -14,6 +14,9 @@
                   <Item>
                     <option name="path" value=".github/workflows/ci.yaml" />
                   </Item>
+                  <Item>
+                    <option name="path" value=".github/workflows/addon-ci.yaml" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>

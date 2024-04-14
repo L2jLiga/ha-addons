@@ -102,6 +102,7 @@ jobs:
   lint-prettier:
     name: Prettier
     runs-on: ubuntu-latest
+    permissions: write-all
     steps:
       - name: ⤵️ Check out code from GitHub
         uses: actions/checkout@v4
