@@ -4,6 +4,7 @@ FROM ${BUILD_FROM}
 
 # Copy root filesystem
 COPY rootfs /
+COPY package.json /
 
 # Setup base
 RUN apk add --no-cache \
@@ -13,7 +14,9 @@ RUN apk add --no-cache \
 	icu-data-full=74.1-r0
 
 # Install MatterBridge
-RUN npm install -g matterbridge@1.2.6  matterbridge-zigbee2mqtt@2.0.7 full-icu@1.5.0
+RUN npm install -g matterbridge@$(cat package.json | jq dependencies.matterbridge)  matterbridge-zigbee2mqtt@$(cat package.json | jq 'dependencies."matterbridge-zigbee2mqtt"') full-icu@1.5.0
+
+RUN rm -Rf /package.json
 
 # Build arguments
 ARG BUILD_ARCH
