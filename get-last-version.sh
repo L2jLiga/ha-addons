@@ -1,30 +1,26 @@
-latest_version="$(git tag | tail -1)"
-echo 0
-is_major="$(git log $latest_version..HEAD --oneline | cut -d ' ' -f2 | grep '!:' -c)"
-is_minor="$(git log $latest_version..HEAD --oneline | cut -d ' ' -f2 | grep 'feat:' -c)"
-echo 1
+#!/usr/bin/bash
+
+latest_version=$(git tag | tail -1)
+
+is_major=$(git log "$latest_version"..HEAD --oneline | cut -d ' ' -f2 | grep '!:' -c)
+is_minor=$(git log "$latest_version"..HEAD --oneline | cut -d ' ' -f2 | grep 'feat:' -c)
 
 increment='patch'
-echo 2
 
 if ! [ "$is_major" = '0' ]; then
-  echo 2.1
   increment='major'
 else
   if ! [ "$is_minor" = '0' ]; then
-    echo 2.2
     increment='minor'
   fi
 fi
-echo 3
 
 npm i
-version="$(npm run semver $latest_version -i $increment | tail -1)"
-echo 4
+version=$(npm run semver "$latest_version" -i "$increment" | tail -1)
 
-echo "changes<<EOF" >>$GITHUB_OUTPUT
-git log $latest_version..HEAD --oneline >>$GITHUB_OUTPUT
-echo "EOF" >>$GITHUB_OUTPUT
-echo 5
-echo "semver=$version" >>$GITHUB_OUTPUT
-echo 6
+{
+  echo "semver=$version"
+  echo "changes<<EOF"
+  git log "$latest_version"..HEAD --oneline
+  echo "EOF"
+} >>"$GITHUB_OUTPUT"
