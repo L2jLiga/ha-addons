@@ -23,6 +23,7 @@ jobs:
       - name: Setup NodeJS
         uses: actions/setup-node@v4
       - id: version
+        shell: bash
         name: Detect version type
         run: |
           latest_version=`git tag | tail -1`
@@ -42,7 +43,8 @@ jobs:
             fi
           fi
 
-          version=`npx -y semver $latest_version -i $increment`
+          npm i -g semver
+          version=`semver $latest_version -i $increment`
 
           echo "semver=$version" >> $GITHUB_OUTPUT
           echo "changes=<<EOF" >> $GITHUB_OUTPUT
