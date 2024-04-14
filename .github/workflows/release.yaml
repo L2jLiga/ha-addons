@@ -40,7 +40,7 @@ jobs:
             fi
           fi
 
-          $version=`npx -y semver $latest_version -i $increment`
+          version=`npx -y semver $latest_version -i $increment`
 
           echo "semver=$output" >> $GITHUB_OUTPUT
           echo "changes=<<EOF" >> $GITHUB_OUTPUT
