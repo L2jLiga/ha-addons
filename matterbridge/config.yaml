@@ -15,11 +15,11 @@ ports:
 ports_description:
   3000/tcp: Web UI
 options:
-  host: localhost
+  host: core-mosquitto
   port: 1883
   topic: zigbee2mqtt
-  username: zigbee2mqtt
-  password: zigbee2mqtt
+  username: mqtt
+  password: mqtt
   whiteList: []
   blackList: []
 map:

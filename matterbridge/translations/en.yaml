@@ -1,0 +1,31 @@
+---
+configuration:
+  host:
+    name: MQTT server host
+    description: >-
+      The host where MQTT Broker is available (without mqtt:// or port)
+  port:
+    name: MQTT server port
+    description: >-
+      The port on which MQTT Broker is available (default: 1883)
+  topic:
+    name: MQTT base topic
+    description: >-
+      MQTT base topic for Zigbee2MQTT MQTT messages (default: zigbee2mqtt)
+  username:
+    name: MQTT username
+    description: >-
+      MQTT server authentication user
+  password:
+    name: MQTT password
+    description: >-
+      MQTT server authentication password
+  whiteList:
+    name: White listed devices
+    description: >-
+      If the whiteList is defined only the devices included are exposed to Matter.
+  blackList:
+    name: Black listed devices
+    description: >-
+      If the blackList is defined the devices included will not be exposed to Matter.
+      If any device creates issues put it in the blackList.
