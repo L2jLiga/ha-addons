@@ -23,11 +23,11 @@ jobs:
       - id: version
         name: Detect version type
         run: |
-          local latest_version=`git tag | tail -1`
-          local is_major=`git log $latest_version..HEAD  --oneline | cut -d ' ' -f2 | grep '!:' | wc --lines`
-          local is_minor=`git log $latest_version..HEAD  --oneline | cut -d ' ' -f2 | grep 'feat:' | wc --lines`
+          latest_version=`git tag | tail -1`
+          is_major=`git log $latest_version..HEAD  --oneline | cut -d ' ' -f2 | grep '!:' | wc --lines`
+          is_minor=`git log $latest_version..HEAD  --oneline | cut -d ' ' -f2 | grep 'feat:' | wc --lines`
 
-          local output='PATCH'
+          output='PATCH'
 
           if ! [ $is_major = '0' ]
           then
