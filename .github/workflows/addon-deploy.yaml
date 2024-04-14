@@ -94,7 +94,7 @@ jobs:
         architecture: ${{ fromJson(needs.information.outputs.architectures) }}
     steps:
       - id: repositoryowner
-        uses: ASzc/change-string-case-action@v2
+        uses: ASzc/change-string-case-action@v6
         with:
           string: ${{ github.repository_owner }}
       - name: ⤵️ Check out code from GitHub
