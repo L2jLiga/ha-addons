@@ -102,14 +102,13 @@ jobs:
   lint-prettier:
     name: Prettier
     runs-on: ubuntu-latest
-    permissions: write-all
     steps:
       - name: ⤵️ Check out code from GitHub
         uses: actions/checkout@v4
       - name: 🚀 Run Prettier
         uses: creyD/prettier_action@v4.3
         with:
-          prettier_options: --write **/*.{json,js,md,yaml}
+          prettier_options: --write matterbridge/*.{json,js,md,yaml} *.{json,js,md,yaml}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

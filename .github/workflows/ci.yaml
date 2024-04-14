@@ -16,6 +16,7 @@ jobs:
     uses: L2jLiga/ha-addons/.github/workflows/addon-ci.yaml@master
 
   release:
+    if: github.event_name != 'pull_request'
     needs:
       - workflows
     runs-on: ubuntu-latest
@@ -25,3 +26,17 @@ jobs:
         with:
           TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           SEMVER: PATCH
+
+  automerge:
+    name: 'Merge Dependabot updates'
+    if: github.event_name == 'pull_request'
+    needs:
+      - workflows
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+    steps:
+      - uses: fastify/github-action-merge-dependabot@v3.9.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
