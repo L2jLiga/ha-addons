@@ -14,7 +14,7 @@ RUN apk add --no-cache \
 	icu-data-full=74.1-r0
 
 # Install MatterBridge
-RUN npm install -g matterbridge@"$(jq 'dependencies.matterbridge' < package.json)"  matterbridge-zigbee2mqtt@"$(jq 'dependencies."matterbridge-zigbee2mqtt"' < package.json)" full-icu@1.5.0
+RUN npm install -g matterbridge@"$(jq 'dependencies.matterbridge' < "/package.json")"  matterbridge-zigbee2mqtt@"$(jq 'dependencies."matterbridge-zigbee2mqtt"' < "/package.json")" full-icu@1.5.0
 
 # Build arguments
 ARG BUILD_ARCH
