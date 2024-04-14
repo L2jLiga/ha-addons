@@ -15,8 +15,7 @@ else
   fi
 fi
 
-npm i
-version=$(npm run semver "$latest_version" -i "$increment" | tail -1)
+version=$(npx -y semver "$latest_version" -i "$increment" | tail -1)
 
 {
   echo "semver=$version"
