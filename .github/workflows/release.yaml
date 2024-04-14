@@ -20,18 +20,17 @@ jobs:
     steps:
       - name: ⤵️ Check out code from GitHub
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
       - name: Setup NodeJS
         uses: actions/setup-node@v4
-      - name: Install coreutils
-        run: sudo apt-get install -y coreutils
-      - name: Install grep
-        run: sudo apt-get install -y grep
-      - name: Make the script files executable
+      - name: 🚀 Make the script files executable
         run: chmod +x get-last-version.sh
       - id: version_and_changelog
-        name: Detect version type
+        name: ℹ Gathering version and changelog
         run: ./get-last-version.sh
-      - name: Create Release
+      - name: 🚀 Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
