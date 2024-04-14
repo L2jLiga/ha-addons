@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "semver": "semver"
+  },
+  "dependencies": {
+    "semver": "^7.6.0"
+  }
+}

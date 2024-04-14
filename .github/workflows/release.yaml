@@ -43,8 +43,8 @@ jobs:
             fi
           fi
 
-          npm i -g semver
-          version=`semver $latest_version -i $increment`
+          npm i
+          version=`npm run semver $latest_version -i $increment | tail -1`
 
           echo "semver=$version" >> $GITHUB_OUTPUT
           echo "changes=<<EOF" >> $GITHUB_OUTPUT
