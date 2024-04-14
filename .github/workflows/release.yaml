@@ -1,0 +1,26 @@
+---
+name: CI + Release
+
+# yamllint disable-line rule:truthy
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  workflows:
+    uses: L2jLiga/ha-addons/.github/workflows/addon-ci.yaml@master
+
+  release:
+    if: github.event_name != 'pull_request'
+    needs:
+      - workflows
+    runs-on: ubuntu-latest
+    steps:
+      - name: Automatic Semver Release
+        uses: rui-costa/action-automatic-semver-releases@1.1.1
+        with:
+          TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          SEMVER: "PATCH"
+          LABEL: ""
