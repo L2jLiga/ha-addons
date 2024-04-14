@@ -31,10 +31,10 @@ jobs:
 
           if ! [ $is_major = '0' ]
           then
-            output = 'MAJOR'
+            output='MAJOR'
           else
             if ! [ $is_minor = '0' ]
-              output = 'MINOR'
+              output='MINOR'
             fi
           fi
 
