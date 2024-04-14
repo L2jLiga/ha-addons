@@ -39,7 +39,7 @@ jobs:
               increment='minor'
             fi
           fi
-          
+
           $version=`npx -y semver $latest_version -i $increment`
 
           echo "semver=$output" >> $GITHUB_OUTPUT
@@ -50,7 +50,7 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ steps.version.outputs.semver }}
           release_name: Release ${{ steps.version.outputs.semver }}
