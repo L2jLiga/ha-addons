@@ -22,9 +22,9 @@ npm i
 version="$(npm run semver $latest_version -i $increment | tail -1)"
 echo 4
 
-echo "semver=$version" >>$GITHUB_OUTPUT
-echo 5
 echo "changes=<<EOF" >>$GITHUB_OUTPUT
 git log $latest_version..HEAD --oneline >>$GITHUB_OUTPUT
 echo "EOF" >>$GITHUB_OUTPUT
+echo 5
+echo "semver=$version" >>$GITHUB_OUTPUT
 echo 6
