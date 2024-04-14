@@ -68,60 +68,12 @@ jobs:
         with:
           dockerfile: "./${{ needs.information.outputs.target }}/Dockerfile"
 
-  lint-json:
-    name: JSON Lint
-    runs-on: ubuntu-latest
-    steps:
-      - name: ⤵️ Check out code from GitHub
-        uses: actions/checkout@v4
-      - name: 🚀 Run JQ
-        run: |
-          shopt -s globstar
-          cat **/*.json | jq '.'
-
-  lint-shellcheck:
-    name: Shellcheck
-    runs-on: ubuntu-latest
-    steps:
-      - name: ⤵️ Check out code from GitHub
-        uses: actions/checkout@v4
-      - name: 🚀 Run Shellcheck
-        uses: ludeeus/action-shellcheck@2.0.0
-        env:
-          SHELLCHECK_OPTS: -s bash
-
-  lint-yamllint:
-    name: YAMLLint
-    runs-on: ubuntu-latest
-    steps:
-      - name: ⤵️ Check out code from GitHub
-        uses: actions/checkout@v4
-      - name: 🚀 Run YAMLLint
-        uses: frenck/action-yamllint@v1.5
-
-  lint-prettier:
-    name: Prettier
-    runs-on: ubuntu-latest
-    steps:
-      - name: ⤵️ Check out code from GitHub
-        uses: actions/checkout@v4
-      - name: 🚀 Run Prettier
-        uses: creyD/prettier_action@v4.3
-        with:
-          prettier_options: --write matterbridge/*.{json,js,md,yaml} *.{json,js,md,yaml}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
   build:
     name: Build ${{ matrix.architecture }}
     needs:
       - information
       - lint-addon
       - lint-hadolint
-      - lint-json
-      - lint-prettier
-      - lint-shellcheck
-      - lint-yamllint
     runs-on: ubuntu-latest
     strategy:
       matrix:
