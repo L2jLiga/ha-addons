@@ -11,9 +11,9 @@ arch:
   - amd64
   - aarch64
 ports:
-  3000/tcp: 3000
+  8283/tcp: 8283
 ports_description:
-  3000/tcp: Web UI
+  8283/tcp: Web UI
 options:
   host: core-mosquitto
   port: 1883
