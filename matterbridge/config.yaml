@@ -11,6 +11,7 @@ arch:
   - amd64
   - aarch64
 webui: http://[HOST]:[PORT:8283]
+watchdog: http://[HOST]:[PORT:8283]
 ports:
   8283/tcp: 8283
 ports_description:
@@ -25,6 +26,12 @@ options:
   blackList: []
 map:
   - addon_config:rw
+discovery:
+  - matter
+ingress: true
+ingress_port: 8283
+panel_icon: mdi:bridge
+panel_title: MatterBridge
 schema:
   host: str
   port: int
