@@ -10,8 +10,6 @@ arch:
   - i386
   - amd64
   - aarch64
-webui: http://[HOST]:[PORT:8283]
-watchdog: http://[HOST]:[PORT:8283]
 ports:
   8283/tcp: 8283
 ports_description:
