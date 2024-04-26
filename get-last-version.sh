@@ -20,6 +20,6 @@ version=$(npx -y semver "$latest_version" -i "$increment" | tail -1)
 {
   echo "semver=$version"
   echo "changes<<EOF"
-  git log "$latest_version"..HEAD --oneline
+  git log "$latest_version"..HEAD --oneline | sed 's/^/- /g'
   echo "EOF"
 } >>"$GITHUB_OUTPUT"
