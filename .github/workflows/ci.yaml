@@ -20,9 +20,10 @@ jobs:
     needs:
       - workflows
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
     steps:
       - uses: fastify/github-action-merge-dependabot@v3.10.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
           use-github-auto-merge: true
