@@ -29,9 +29,8 @@ mkdir -p /config/Matterbridge
 ln -s /config/Matterbridge /root/Matterbridge
 
 bashio::log.info "Dumping /data/options.json"
-echo "$CONFIG_PATH"
-cat "$CONFIG_PATH" || true
-ls -l /
+bashio::log.info "$CONFIG_PATH"
+bashio::log.info "$(cat "$CONFIG_PATH" || echo "No config found")"
 
 bashio::log.info "Configuring Zigbee2MQTT plugin"
 cat <<EOF | tee /root/.matterbridge/matterbridge-zigbee2mqtt.config.json
