@@ -23,12 +23,12 @@ fi
 
 bashio::log.info "Migrating old addon options"
 if bashio::config.has_value 'blacklist'; then
-    bashio::addon.option 'blackList' $(bashio::addon.option "blacklist")
+    bashio::addon.option 'blackList' "$(bashio::addon.option "blacklist")"
     bashio::addon.option 'blacklist'
 fi
 
 if bashio::config.has_value 'whitelist'; then
-    bashio::addon.option 'whiteList' $(bashio::addon.option "whitelist")
+    bashio::addon.option 'whiteList' "$(bashio::addon.option "whitelist")"
     bashio::addon.option 'whitelist'
 fi
 
