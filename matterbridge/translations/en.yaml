@@ -50,6 +50,14 @@ configuration:
       - device_temperature - disables "Device temperature" diagnostics
       - temperature - disables "Temperature" sensor
       - humidity - disables "Humidity" sensor
+  unregisterOnShutdown:
+    name: Unregister on shutdown
+    description: >-
+      If enabled, then all Zigbee2MQTT devices will be unregistered before plugin shutdown / restart.
+      Usefull when you have to clean-up devices
+  type:
+    name: MatterBridge plugin type
+    description: type of MatterBridge plugin, uneditable
 network:
   8283/tcp: Web UI
   8284/tcp: WebSocket for UI

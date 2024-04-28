@@ -54,6 +54,14 @@ configuration:
       - device_temperature - отключит диагностику "Температура"
       - temperature - отключит сенсор "Температура"
       - humidity - отключит сенсор "Влажность"
+  unregisterOnShutdown:
+    name: Удаление устройства при выключении
+    description: >-
+      Если включено, устройства Zigbee2MQTT будут удалены из Matter при остановке или перезапуске плагина.
+      Может быть удобно, если устройства раздвоились или что-то ещё пошло не так.
+  type:
+    name: MatterBridge plugin type
+    description: нередактируется
 network:
   8283/tcp: Web UI
   8284/tcp: WebSocket для UI

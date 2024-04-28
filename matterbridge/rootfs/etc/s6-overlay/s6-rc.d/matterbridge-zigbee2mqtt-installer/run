@@ -37,7 +37,7 @@ cat <<EOF | tee /root/.matterbridge/matterbridge-zigbee2mqtt.config.json
 {
   "name": "matterbridge-zigbee2mqtt",
   "type": "DynamicPlatform",
-  "unregisterOnShutdown": false,
+  "unregisterOnShutdown": $(bashio::config "unregisterOnShutdown"),
   "host": "$(bashio::config "host")",
   "port": $(bashio::config "port"),
   "topic": "$(bashio::config "topic")",

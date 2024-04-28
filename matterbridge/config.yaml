@@ -21,13 +21,14 @@ options:
   topic: zigbee2mqtt
   username: mqtt
   password: mqtt
+  unregisterOnShutdown: false
   whiteList: []
   blackList: []
   switchList: []
   lightList: []
   outletList: []
   featureBlackList: []
-  deviceFeatureBlackList:
+  type: DynamicPlatform
 map:
   - addon_config:rw
 discovery:
@@ -40,6 +41,7 @@ schema:
   topic: str
   username: str
   password: str
+  unregisterOnShutdown: bool
   whitelist:
     - "str?"
   blacklist:
@@ -52,4 +54,5 @@ schema:
     - "str?"
   featureBlackList:
     - "str?"
+  type: list(DynamicPlatform)
 host_network: true
