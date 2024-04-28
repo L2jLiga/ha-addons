@@ -14,10 +14,6 @@ ports:
   8283/tcp: 8283
   5550/tcp: 5550
   8284/tcp: null
-ports_description:
-  8283/tcp: Web UI
-  8284/tcp: WebSocket for UI
-  5550/tcp: MatterBridge Aggregator port
 webui: "http://[HOST]:[PORT:8283]/"
 options:
   host: core-mosquitto

@@ -29,3 +29,7 @@ configuration:
     description: >-
       If the blackList is defined the devices included will not be exposed to Matter.
       If any device creates issues put it in the blackList.
+network:
+  8283/tcp: Web UI
+  8284/tcp: WebSocket for UI
+  5550/tcp: MatterBridge Aggregator port
