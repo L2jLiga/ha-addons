@@ -29,6 +29,27 @@ configuration:
     description: >-
       If the blackList is defined the devices included will not be exposed to Matter.
       If any device creates issues put it in the blackList.
+  switchList:
+    name: Switch devices
+    description: >-
+      If you want to treat device as switch, add it's friendly name here
+  lightList:
+    name: Light devices
+    description: >-
+      If you want to treat device as light, add it's friendly name here
+  outletList:
+    name: Outlet devices
+    description: >-
+      If you want to treat device as light, add it's friendly name here
+  featureBlackList:
+    name: Black listed features
+    description: >-
+      If you want to exclude some features for ALL devices, you can add them here.
+      Feature names can be aquired from Zigbee2MQTT -> Devices -> Pick device -> Go to "State"
+      Examples: 
+      - device_temperature - disables "Device temperature" sensor (usually in Diagnostics card)
+      - temperature - disables "Temperature" sensor (in Sensors card)
+      - humidity - disables "Humidity" sensor (in Sensors card)
 network:
   8283/tcp: Web UI
   8284/tcp: WebSocket for UI

@@ -11,8 +11,8 @@ arch:
   - amd64
   - aarch64
 ports:
-  8283/tcp: 8283
-  5550/tcp: 5550
+  8283/tcp: null
+  5550/tcp: null
   8284/tcp: null
 webui: "http://[HOST]:[PORT:8283]/"
 options:
@@ -23,6 +23,11 @@ options:
   password: mqtt
   whiteList: []
   blackList: []
+  switchList: []
+  lightList: []
+  outletList: []
+  featureBlackList: []
+  deviceFeatureBlackList:
 map:
   - addon_config:rw
 discovery:
@@ -38,5 +43,13 @@ schema:
   whitelist:
     - "str?"
   blacklist:
+    - "str?"
+  switchList:
+    - "str?"
+  lightList:
+    - "str?"
+  outletList:
+    - "str?"
+  featureBlackList:
     - "str?"
 host_network: true
