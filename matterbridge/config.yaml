@@ -12,8 +12,10 @@ arch:
   - aarch64
 ports:
   8283/tcp: 8283
+  8284/tcp: null
 ports_description:
   8283/tcp: Web UI
+  8284/tcp: WebSocket for UI
 webui: "http://[HOST]:[PORT:8283]/"
 options:
   host: core-mosquitto
