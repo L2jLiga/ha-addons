@@ -29,6 +29,7 @@ options:
   outletList: []
   featureBlackList: []
   type: DynamicPlatform
+  name: matterbridge-zigbee2mqtt
 map:
   - addon_config:rw
 discovery:
@@ -42,9 +43,9 @@ schema:
   username: str
   password: str
   unregisterOnShutdown: bool
-  whitelist:
+  whiteList:
     - "str?"
-  blacklist:
+  blackList:
     - "str?"
   switchList:
     - "str?"
@@ -55,4 +56,5 @@ schema:
   featureBlackList:
     - "str?"
   type: list(DynamicPlatform)
+  name: list(matterbridge-zigbee2mqtt)
 host_network: true

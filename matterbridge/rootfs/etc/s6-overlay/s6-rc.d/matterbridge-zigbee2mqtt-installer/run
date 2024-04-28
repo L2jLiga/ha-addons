@@ -21,6 +21,17 @@ if ! bashio::config.has_value 'username' || ! bashio::config.has_value 'password
     bashio::exit.nok "Setting a username and password is required!"
 fi
 
+bashio::log.info "Migrating old addon options"
+if bashio::config.has_value 'blacklist'; then
+    bashio::addon.option 'blackList' $(bashio::addon.option "blacklist")
+    bashio::addon.option 'blacklist'
+fi
+
+if bashio::config.has_value 'whitelist'; then
+    bashio::addon.option 'whiteList' $(bashio::addon.option "whitelist")
+    bashio::addon.option 'whitelist'
+fi
+
 bashio::log.info "Linking addon config"
 mkdir -p /config/.matterbridge
 ln -s /config/.matterbridge /root/.matterbridge
@@ -28,24 +39,9 @@ ln -s /config/.matterbridge /root/.matterbridge
 mkdir -p /config/Matterbridge
 ln -s /config/Matterbridge /root/Matterbridge
 
-bashio::log.info "Dumping /data/options.json"
-bashio::log.info "$(cat /data/options.json || echo "No config found")"
-
 bashio::log.info "Configuring Zigbee2MQTT plugin"
-cat <<EOF | tee /root/.matterbridge/matterbridge-zigbee2mqtt.config.json
-{
-  "name": "matterbridge-zigbee2mqtt",
-  "type": "DynamicPlatform",
-  "unregisterOnShutdown": $(bashio::config "unregisterOnShutdown"),
-  "host": "$(bashio::config "host")",
-  "port": $(bashio::config "port"),
-  "topic": "$(bashio::config "topic")",
-  "username": "$(bashio::config "username")",
-  "password": "$(bashio::config "password")",
-  "whiteList": $(bashio::config "whiteList"),
-  "blackList": $(bashio::config "blackList")
-}
-EOF
+rm -f /root/.matterbridge/matterbridge-zigbee2mqtt.config.json
+ln -s /data/options.json /root/.matterbridge/matterbridge-zigbee2mqtt.config.json
 
 bashio::log.info "Adding Zigbee2MQTT plugin to MatterBridge"
 cd /usr/local/lib/node_modules || exit

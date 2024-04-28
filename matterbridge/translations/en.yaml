@@ -45,11 +45,9 @@ configuration:
     name: Black listed features
     description: >-
       If you want to exclude some features for ALL devices, you can add them here.
-      Feature names can be aquired from Zigbee2MQTT -> Devices -> Pick device -> Go to "State"
-      Examples:
-      - device_temperature - disables "Device temperature" diagnostics
-      - temperature - disables "Temperature" sensor
-      - humidity - disables "Humidity" sensor
+      Feature names can be aquired from Zigbee2MQTT -> Devices -> Pick device -> Go to "State".
+      For example, "temperature" will disable "Temperature" sensor for all devices,
+      "humidity" will disable "Humidity" sensor for all devices.
   unregisterOnShutdown:
     name: Unregister on shutdown
     description: >-
@@ -57,7 +55,8 @@ configuration:
       Usefull when you have to clean-up devices
   type:
     name: MatterBridge plugin type
-    description: type of MatterBridge plugin, uneditable
+  name:
+    name: MatterBridge plugin name
 network:
   8283/tcp: Web UI
   8284/tcp: WebSocket for UI
