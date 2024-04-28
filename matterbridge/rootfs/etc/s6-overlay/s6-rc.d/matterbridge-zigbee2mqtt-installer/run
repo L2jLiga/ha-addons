@@ -7,6 +7,20 @@
 
 bashio::log.info "Prepare MatterBridge for start"
 
+bashio::log.info "Check MQTT settings"
+if ! bashio::config.has_value "host" || ! bashio::config.has_value "port"; then
+    bashio::exit.nok "Setting a MQTT host and port is required!"
+fi
+
+if ! bashio::config.has_value "topic"; then
+    bashio::exit.nok "Setting a Zigbee2MQTT topic is required!"
+fi
+
+bashio::log.info "Check Login data"
+if ! bashio::config.has_value 'username' || ! bashio::config.has_value 'password'; then
+    bashio::exit.nok "Setting a username and password is required!"
+fi
+
 bashio::log.info "Linking addon config"
 mkdir -p /config/.matterbridge
 ln -s /config/.matterbridge /root/.matterbridge
