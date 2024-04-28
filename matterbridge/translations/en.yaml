@@ -47,9 +47,9 @@ configuration:
       If you want to exclude some features for ALL devices, you can add them here.
       Feature names can be aquired from Zigbee2MQTT -> Devices -> Pick device -> Go to "State"
       Examples: 
-      - device_temperature - disables "Device temperature" sensor (usually in Diagnostics card)
-      - temperature - disables "Temperature" sensor (in Sensors card)
-      - humidity - disables "Humidity" sensor (in Sensors card)
+      - device_temperature - disables "Device temperature" diagnostics
+      - temperature - disables "Temperature" sensor
+      - humidity - disables "Humidity" sensor
 network:
   8283/tcp: Web UI
   8284/tcp: WebSocket for UI
