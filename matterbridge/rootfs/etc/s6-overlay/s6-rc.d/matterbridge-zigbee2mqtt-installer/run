@@ -1,8 +1,8 @@
 #!/command/with-contenv bashio
 # shellcheck shell=bash
 # ==============================================================================
-# Home Assistant Community Add-on: Example
-# Example init script, runs before any other service
+# Home Assistant Community Add-on: MatterBridge
+# Installs and configure MatterBridge Zigbee2MQTT plugin
 # ==============================================================================
 
 bashio::log.info "Prepare MatterBridge for start"
