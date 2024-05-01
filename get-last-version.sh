@@ -20,6 +20,6 @@ version=$(npx -y semver "$latest_version" -i "$increment" | tail -1)
 {
   echo "semver=$version"
   echo "changes<<EOF"
-  git log v1.8.0..HEAD --pretty=format:"<details><summary>%h %s</summary>%n%B</details>"
+  git log "$latest_version"..HEAD --pretty=format:"<details><summary>%h %s</summary>%n%B</details>"
   echo "EOF"
 } >>"$GITHUB_OUTPUT"
