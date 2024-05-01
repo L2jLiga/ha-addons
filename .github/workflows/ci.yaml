@@ -19,6 +19,8 @@ jobs:
     if: github.event.pull_request.user.login == 'dependabot[bot]'
     runs-on: ubuntu-latest
     steps:
+      - name: ⤵️ Check out code from GitHub
+        uses: actions/checkout@v4
       - name: Enable Pull Request Automerge
         run: gh pr merge --merge --auto "1"
         env:
