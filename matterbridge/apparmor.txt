@@ -56,10 +56,17 @@ profile matterbridge-zigbee2mqtt flags=(attach_disconnected,mediate_deleted) {
     /config/.matterbridge/** rw,
 
     # Access to libraries
-    /lib/** rix,
+    /lib/libc.musl-x86_64.so.1 r,
+
+    # ICU
+    /usr/lib/libicudata.so.74 r,
+    /usr/lib/libicudata.so.74.1 r,
+    /usr/share/icu/74.1/icudt74l.dat r,
 
     # Access to node_modules
+    /usr/lib/node_modules rw,
     /usr/lib/node_modules/** rw,
+    /usr/local/lib/node_modules/** rw,
     /usr/local/lib/node_modules/** rw,
     /usr/local/lib/node_modules/matterbridge/frontend/build/** rw,
 
@@ -68,8 +75,6 @@ profile matterbridge-zigbee2mqtt flags=(attach_disconnected,mediate_deleted) {
     /root/MatterBridge/** rw,
 
     # Access required to start MatterBridge
-    /usr/bin/env ix,
-    /usr/bin/node ix,
     /usr/local/lib/node_modules/matterbridge ix,
   }
 
@@ -81,7 +86,8 @@ profile matterbridge-zigbee2mqtt flags=(attach_disconnected,mediate_deleted) {
     network,
 
     # Access libraries
-    /lib/** rix,
+    /lib/libc.musl-x86_64.so.1 r,
+    /usr/lib/libpcre.so.1 r,
 
     # Access dev devices
     /dev/null rw,
