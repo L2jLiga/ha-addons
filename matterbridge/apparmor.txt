@@ -32,14 +32,14 @@ profile matterbridge-zigbee2mqtt flags=(attach_disconnected,mediate_deleted) {
   /usr/bin/matterbridge.sh cx -> matterbridge,
   /usr/local/lib/node_modules/matterbridge/dist/cli.js cx -> matterbridge,
   /usr/lib/node_modules/npm/bin/npx-cli.js cx -> matterbridge,
+  /etc/s6-overlay/s6-rc.d/matterbridge-zigbee2mqtt-installer/run cx -> matterbridge,
   /etc/s6-overlay/s6-rc.d/matterbridge/run cx -> matterbridge,
-  /etc/s6-overlay/s6-rc.d/matterbridge-zigbee2mqtt/run cx -> matterbridge,
   /usr/bin/node cx -> matterbridge,
   /usr/bin/npm cx -> matterbridge,
   /usr/bin/npx cx -> matterbridge,
   /usr/sbin/nginx cx -> nginx,
 
-  profile matterbridge flags=(attach_disconnected,mediate_deleted) {
+  profile matterbridge flags=(attach_disconnected,mediate_deleted,complain) {
     #include <abstractions/base>
 
     # Access network
