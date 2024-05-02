@@ -53,11 +53,16 @@ profile matterbridge-zigbee2mqtt flags=(attach_disconnected,mediate_deleted) {
     /usr/bin/env ix,
     /usr/bin/node ix,
     /usr/local/lib/node_modules/matterbridge ix,
+  }
 
+  profile nginx flags=(attach_disconnected,mediate_deleted) {
     # Nginx configuration
     /etc/nginx/** r,
 
     # Nginx logs
-    /var/lib/nginx/logs/** rw,
+    /var/lib/nginx/** rw,
+
+    # Executables
+    /usr/bin/nginx ix,
   }
 }
