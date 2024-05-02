@@ -5,6 +5,6 @@
 # Runs matterbridge script
 # ==============================================================================
 
-bashio::log.info "Starting Example1..."
+bashio::log.info "Starting MatterBridge..."
 
 exec /usr/bin/matterbridge.sh
