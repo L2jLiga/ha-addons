@@ -29,7 +29,10 @@ profile matterbridge-zigbee2mqtt flags=(attach_disconnected,mediate_deleted) {
 
   # Start new profile for service
   /usr/bin/matterbridge cx -> matterbridge,
-  /usr/bin/nginx cx -> nginx,
+  /usr/bin/node cx -> matterbridge,
+  /usr/bin/npm cx -> matterbridge,
+  /usr/bin/npx cx -> matterbridge,
+  /usr/sbin/nginx cx -> nginx,
 
   profile matterbridge flags=(attach_disconnected,mediate_deleted) {
     #include <abstractions/base>
