@@ -57,6 +57,7 @@ profile matterbridge-zigbee2mqtt flags=(attach_disconnected,mediate_deleted) {
 
     # Access to libraries
     /lib/libc.musl-x86_64.so.1 r,
+    /lib/ld-musl-x86_64.so.1 r,
 
     # ICU
     /usr/lib/libicudata.so.74 r,
@@ -87,6 +88,7 @@ profile matterbridge-zigbee2mqtt flags=(attach_disconnected,mediate_deleted) {
 
     # Access libraries
     /lib/libc.musl-x86_64.so.1 r,
+    /lib/ld-musl-x86_64.so.1 r,
     /usr/lib/libpcre.so.1 r,
 
     # Access dev devices
