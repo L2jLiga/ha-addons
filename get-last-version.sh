@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-latest_version=$(git tag | tail -1)
+latest_version=$(gh release list --json "tagName,isLatest" --jq ".[] | select (.isLatest == true).tagName")
 
 is_major=$(git log "$latest_version"..HEAD --oneline | cut -d ' ' -f2 | grep '!:' -c)
 is_minor=$(git log "$latest_version"..HEAD --oneline | cut -d ' ' -f2 | grep 'feat:' -c)
