@@ -61,6 +61,7 @@ profile matterbridge-zigbee2mqtt flags=(attach_disconnected,mediate_deleted) {
     # Access to node_modules
     /usr/lib/node_modules/** rw,
     /usr/local/lib/node_modules/** rw,
+    /usr/local/lib/node_modules/matterbridge/frontend/build/** rw,
 
     # Access to MatterBridge data
     /root/.matterbridge/** rw,
@@ -78,6 +79,9 @@ profile matterbridge-zigbee2mqtt flags=(attach_disconnected,mediate_deleted) {
 
     # Access network
     network,
+
+    # Access libraries
+    /lib/** rix,
 
     # Access dev devices
     /dev/null rw,
