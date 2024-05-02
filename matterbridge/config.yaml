@@ -14,7 +14,9 @@ ports:
   8283/tcp: null
   5550/tcp: null
   8284/tcp: null
-webui: "http://[HOST]:[PORT:8283]/"
+# webui: "http://[HOST]:[PORT:8283]/"
+ingress: true
+ingress_port: 8285
 options:
   host: core-mosquitto
   port: 1883

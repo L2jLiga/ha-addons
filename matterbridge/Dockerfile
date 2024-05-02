@@ -9,9 +9,10 @@ COPY package.json /
 # Setup base
 RUN apk add --no-cache \
     git=2.43.0-r0 \
+    nginx=1.24.0-r16 \
     nodejs=20.12.1-r0 \
     npm=10.2.5-r0 \
-	icu-data-full=74.1-r0
+    icu-data-full=74.1-r0
 
 # Install MatterBridge
 RUN npm install -g matterbridge@"$(jq -r '.dependencies.matterbridge' < "/package.json")"  matterbridge-zigbee2mqtt@"$(jq -r '.dependencies."matterbridge-zigbee2mqtt"' < "/package.json")" full-icu@1.5.0

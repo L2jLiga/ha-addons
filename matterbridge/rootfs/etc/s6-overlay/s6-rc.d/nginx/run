@@ -1,8 +1,9 @@
-#!/usr/bin/with-contenv bashio
+#!/command/with-contenv bashio
 # shellcheck shell=bash
 # ==============================================================================
-# Home Assistant Community Add-on: MatterBridge
-# Main entrypoint
+# Community Hass.io Add-ons: MatterBridge
+# Runs the NGINX proxy
 # ==============================================================================
 
-npx matterbridge -bridge
+bashio::log.info "Starting NGINX..."
+exec nginx
