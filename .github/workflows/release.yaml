@@ -30,6 +30,8 @@ jobs:
       - id: version_and_changelog
         name: ℹ Gathering version and changelog
         run: ./get-last-version.sh
+        env:
+          GH_TOKEN: ${{ secrets.TOKEN }}
       - name: 🚀 Create Release
         id: create_release
         uses: actions/create-release@v1
