@@ -41,6 +41,7 @@ profile matterbridge-zigbee2mqtt flags=(attach_disconnected,mediate_deleted) {
 
   profile matterbridge flags=(attach_disconnected,mediate_deleted,complain) {
     #include <abstractions/base>
+    #include <abstractions/nameservice>
 
     # Access network
     network,
@@ -65,11 +66,8 @@ profile matterbridge-zigbee2mqtt flags=(attach_disconnected,mediate_deleted) {
     /usr/share/icu/74.1/icudt74l.dat r,
 
     # Access to node_modules
-    /usr/lib/node_modules rw,
-    /usr/lib/node_modules/** rw,
-    /usr/local/lib/node_modules/** rw,
-    /usr/local/lib/node_modules/** rw,
-    /usr/local/lib/node_modules/matterbridge/frontend/build/** rw,
+    /usr/{,local/}lib/node_modules rwlixk,
+    /usr/{,local/}lib/node_modules/{,**} rwlixk,
 
     # Access to MatterBridge data
     /root/.matterbridge/** rw,
@@ -80,6 +78,13 @@ profile matterbridge-zigbee2mqtt flags=(attach_disconnected,mediate_deleted) {
   }
 
   profile nginx flags=(attach_disconnected,mediate_deleted) {
+    #include <abstractions/base>
+    #include <abstractions/openssl>
+    #include <abstractions/nameservice>
+
+    # Receive signals from S6-Overlay
+    signal (receive) peer=*_matterbridge-zigbee2mqtt,
+    
     # Nginx configuration
     /etc/nginx/** r,
 
@@ -87,9 +92,21 @@ profile matterbridge-zigbee2mqtt flags=(attach_disconnected,mediate_deleted) {
     network,
 
     # Access libraries
+    # musl
     /lib/libc.musl-x86_64.so.1 r,
     /lib/ld-musl-x86_64.so.1 r,
-    /usr/lib/libpcre.so.1 r,
+    # pcre
+    /usr/lib/libpcre** r,
+    # libcrypto3
+    /{,usr/}lib/libcrypto.so.3 r,
+    /usr/lib/engines-3 r,
+    /usr/lib/engines-3/** r,
+    /usr/lib/ossl-modules r,
+    /usr/lib/ossl-modules/** r,
+    # libssl3
+    /{,usr/}lib//libssl.so.3 r,
+    # zlib
+    /lib/libz.so** r,
 
     # Access dev devices
     /dev/null rw,
