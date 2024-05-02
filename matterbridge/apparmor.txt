@@ -53,13 +53,6 @@ profile matterbridge-zigbee2mqtt flags=(attach_disconnected,mediate_deleted) {
     /usr/bin/env ix,
     /usr/bin/node ix,
     /usr/local/lib/node_modules/matterbridge ix,
-  }
-
-  profile nginx flags=(attach_disconnected,mediate_deleted) {
-    #include <abstractions/base>
-    
-    # Receive signals from S6-Overlay
-    signal (receive) peer=*_matterbridge-zigbee2mqtt,
 
     # Nginx configuration
     /etc/nginx/** r,
