@@ -53,6 +53,10 @@ profile matterbridge-zigbee2mqtt flags=(attach_disconnected,mediate_deleted) {
 
     # Access to mapped volumes specified in config.json
     /config/** rw,
+    /config/.matterbridge/** rw,
+
+    # Access to libraries
+    /lib/** rix,
 
     # Access to node_modules
     /usr/lib/node_modules/** rw,
@@ -72,7 +76,10 @@ profile matterbridge-zigbee2mqtt flags=(attach_disconnected,mediate_deleted) {
     # Nginx configuration
     /etc/nginx/** r,
 
-    # 
+    # Access network
+    network,
+
+    # Access dev devices
     /dev/null rw,
 
     # Nginx logs
@@ -82,6 +89,6 @@ profile matterbridge-zigbee2mqtt flags=(attach_disconnected,mediate_deleted) {
     /var/run/nginx.pid rw,
 
     # Executables
-    /usr/bin/nginx rix,
+    /usr/sbin/nginx rix,
   }
 }
