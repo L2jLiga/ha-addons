@@ -72,6 +72,9 @@ profile matterbridge-zigbee2mqtt flags=(attach_disconnected,mediate_deleted) {
     # Nginx configuration
     /etc/nginx/** r,
 
+    # 
+    /dev/null rw,
+
     # Nginx logs
     /var/lib/nginx/** rw,
 
@@ -79,6 +82,6 @@ profile matterbridge-zigbee2mqtt flags=(attach_disconnected,mediate_deleted) {
     /var/run/nginx.pid rw,
 
     # Executables
-    /usr/bin/nginx ix,
+    /usr/bin/nginx rix,
   }
 }
