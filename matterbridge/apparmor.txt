@@ -27,6 +27,13 @@ profile matterbridge-zigbee2mqtt flags=(attach_disconnected,mediate_deleted) {
   # Access to options.json and other files within your addon
   /data/** rw,
 
+
+  # Access to MatterBridge data
+  owner @{HOME}.matterbridge rwl,
+  owner @{HOME}/.matterbridge/** rwl,
+  owner @{HOME}MatterBridge rwl,
+  owner @{HOME}/MatterBridge/** rwl,
+
   # Start new profile for service
   /usr/bin/matterbridge cx -> matterbridge,
   /usr/bin/matterbridge.sh cx -> matterbridge,
@@ -68,8 +75,10 @@ profile matterbridge-zigbee2mqtt flags=(attach_disconnected,mediate_deleted) {
     /usr/{,local/}lib/node_modules/{,**} rwlixk,
 
     # Access to MatterBridge data
-    /root/.matterbridge/** rw,
-    /root/MatterBridge/** rw,
+    owner @{HOME}.matterbridge rwl,
+    owner @{HOME}/.matterbridge/** rwl,
+    owner @{HOME}MatterBridge rwl,
+    owner @{HOME}/MatterBridge/** rwl,
 
     # Access required to start MatterBridge
     /usr/local/lib/node_modules/matterbridge ix,
