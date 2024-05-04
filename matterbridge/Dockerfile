@@ -17,7 +17,7 @@ RUN apk add --no-cache \
 # Install MatterBridge
 RUN npm install -g matterbridge@"$(jq -r '.dependencies.matterbridge' < "/package.json")"  matterbridge-zigbee2mqtt@"$(jq -r '.dependencies."matterbridge-zigbee2mqtt"' < "/package.json")" full-icu@1.5.0
 
-RUN mkdir -p /var/lib/nginx/tmp/client_body && mkdir /var/lib/nginx/logs
+RUN chmod -R 775 /var/lib/nginx
 
 # Build arguments
 ARG BUILD_ARCH
