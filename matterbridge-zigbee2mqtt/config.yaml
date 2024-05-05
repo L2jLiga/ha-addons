@@ -6,7 +6,7 @@ description: MatterBridge with Zigbee2MQTT plugin integration
 url: https://github.com/l2jliga/ha-addons
 codenotary: l2jliga@gmail.com
 init: false
-apparmor: falsw
+apparmor: false
 arch:
   - i386
   - amd64
