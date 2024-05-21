@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/base:15.0.7
+ARG BUILD_FROM=ghcr.io/hassio-addons/base:15.0.8
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
@@ -8,7 +8,7 @@ COPY package.json /
 
 # Setup base
 RUN apk add --no-cache \
-    git=2.43.0-r0 \
+    git=2.43.4-r0 \
     nginx=1.24.0-r16 \
     nodejs=20.12.1-r0 \
     npm=10.2.5-r0 \
