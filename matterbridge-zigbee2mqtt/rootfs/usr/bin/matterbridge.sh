@@ -5,4 +5,4 @@
 # Main entrypoint
 # ==============================================================================
 
-npx matterbridge -bridge
+npx matterbridge -bridge -docker
