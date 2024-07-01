@@ -8,6 +8,10 @@ on:
       - master
   workflow_dispatch:
 
+concurrency:
+  cancel-in-progress: true
+  group: release_addon
+
 jobs:
   workflows:
     uses: L2jLiga/ha-addons/.github/workflows/addon-ci.yaml@master
@@ -32,6 +36,8 @@ jobs:
         run: ./get-last-version.sh
         env:
           GH_TOKEN: ${{ secrets.TOKEN }}
+      - name: Wait 3h before actual release
+        run: sleep 3h
       - name: 🚀 Create Release
         id: create_release
         uses: actions/create-release@v1
