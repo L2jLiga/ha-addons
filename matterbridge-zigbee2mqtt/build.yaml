@@ -1,8 +1,8 @@
 ---
 build_from:
-  i386: ghcr.io/hassio-addons/base:16.1.3
-  amd64: ghcr.io/hassio-addons/base:16.1.3
-  aarch64: ghcr.io/hassio-addons/base:16.1.3
+  i386: ghcr.io/hassio-addons/base:16.2.1
+  amd64: ghcr.io/hassio-addons/base:16.2.1
+  aarch64: ghcr.io/hassio-addons/base:16.2.1
 codenotary:
   base_image: l2jliga@gmail.com
   signer: l2jliga@gmail.com
