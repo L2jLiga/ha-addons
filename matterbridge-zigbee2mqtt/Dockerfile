@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/base:16.2.1
+ARG BUILD_FROM=ghcr.io/hassio-addons/base:17.0.1
 
 # Build arguments
 ARG BUILD_ARCH
@@ -14,10 +14,10 @@ FROM ${BUILD_FROM}
 
 # Setup base
 RUN apk add --no-cache \
-    git=2.45.2-r0 \
-    nginx=1.26.2-r0 \
-    nodejs=20.15.1-r0 \
-    npm=10.8.0-r0 \
+    git=2.47.1-r0 \
+    nginx=1.26.2-r4 \
+    nodejs=22.11.0-r1 \
+    npm=10.9.1-r0 \
     icu-data-full=74.2-r0
 
 # Copy root filesystem
