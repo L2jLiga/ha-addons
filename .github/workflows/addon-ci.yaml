@@ -170,7 +170,7 @@ jobs:
         with:
           string: ${{ github.repository_owner }}
       - name: 🚀 Build
-        uses: docker/build-push-action@v6.10.0
+        uses: docker/build-push-action@v6.13.0
         with:
           push: false
           context: ${{ needs.information.outputs.target }}
