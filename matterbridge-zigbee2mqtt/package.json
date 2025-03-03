@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "matterbridge": "2.2.0",
+    "matterbridge": "2.2.1",
     "matterbridge-zigbee2mqtt": "2.4.6"
   }
 }
