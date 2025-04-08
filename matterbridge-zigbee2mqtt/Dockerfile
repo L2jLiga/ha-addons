@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/base:17.0.1
+ARG BUILD_FROM=ghcr.io/hassio-addons/base:17.2.4
 
 # Build arguments
 ARG BUILD_ARCH
@@ -14,7 +14,7 @@ FROM ${BUILD_FROM}
 
 # Setup base
 RUN apk add --no-cache \
-    nginx=1.26.2-r0 \
+    nginx=1.26.3-r0 \
     npm=10.9.1-r0 \
     icu-data-full=74.2-r0
 
@@ -23,7 +23,11 @@ COPY rootfs /
 COPY package.json /
 
 # Install MatterBridge
-RUN npm install -g matterbridge@"$(jq -r '.dependencies.matterbridge' < "/package.json")"  matterbridge-zigbee2mqtt@"$(jq -r '.dependencies."matterbridge-zigbee2mqtt"' < "/package.json")" full-icu@1.5.0
+RUN npm install -g \
+    matterbridge@"$(jq -r '.dependencies.matterbridge' < "/package.json")" \
+    matterbridge-zigbee2mqtt@"$(jq -r '.dependencies."matterbridge-zigbee2mqtt"' < "/package.json")" \
+    full-icu@1.5.0 && \
+    npm cache clean --force
 
 RUN chmod -R 775 /var/lib/nginx
 
