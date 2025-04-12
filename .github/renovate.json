@@ -52,6 +52,16 @@
       "matchDatasources": ["docker"],
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true
+    },
+    {
+      "groupName": "Matterbridge",
+      "matchDatasources": ["npm"]
+    },
+    {
+      "groupName": "Matterbridge",
+      "matchDatasources": ["npm"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
     }
   ]
 }
