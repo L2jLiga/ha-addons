@@ -13,15 +13,3 @@ on:
 jobs:
   workflows:
     uses: L2jLiga/ha-addons/.github/workflows/addon-ci.yaml@master
-
-  automerge:
-    name: 'Merge Dependabot updates'
-    if: github.event.pull_request.user.login == 'dependabot[bot]'
-    runs-on: ubuntu-latest
-    steps:
-      - name: ⤵️ Check out code from GitHub
-        uses: actions/checkout@v4
-      - name: Enable Pull Request Automerge
-        run: gh pr merge "${{ github.event.number }}" --squash --auto
-        env:
-          GH_TOKEN: ${{ secrets.TOKEN }}
