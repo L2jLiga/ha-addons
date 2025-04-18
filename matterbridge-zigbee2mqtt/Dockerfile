@@ -25,7 +25,7 @@ RUN chmod -R 775 /var/lib/nginx
 
 # Install MatterBridge
 RUN npm install -g \
-    matterbridge@2.2.8 \
+    matterbridge@2.2.9 \
     matterbridge-zigbee2mqtt@2.4.7 \
     full-icu@1.5.0 && \
     npm cache clean --force
