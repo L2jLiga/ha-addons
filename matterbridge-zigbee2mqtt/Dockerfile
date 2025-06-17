@@ -19,9 +19,8 @@ COPY rootfs /
 RUN apk add --no-cache \
     nginx=1.26.3-r0 \
     npm=10.9.1-r0 \
-    icu-data-full=74.2-r0
-
-RUN chmod -R 775 /var/lib/nginx
+    icu-data-full=74.2-r0 && \
+    chmod -R 775 /var/lib/nginx
 
 # Install MatterBridge
 RUN npm install -g \
@@ -52,7 +51,7 @@ LABEL \
 
 # Healthcheck
 ENV HEALTH_PORT="8283" \
-    HEALTH_URL=""
+    HEALTH_URL="/health"
 HEALTHCHECK \
     --interval=5s \
     --retries=5 \
