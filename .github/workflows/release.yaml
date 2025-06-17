@@ -4,6 +4,9 @@ name: CI + Release
 # yamllint disable-line rule:truthy
 on:
   push:
+    paths-ignore:
+      - '**'
+      - '!matterbridge-zigbee2mqtt/**'
     branches:
       - master
   workflow_dispatch:
@@ -36,8 +39,8 @@ jobs:
         run: ./get-last-version.sh
         env:
           GH_TOKEN: ${{ secrets.TOKEN }}
-      - name: Wait 3h before actual release
-        run: sleep 3h
+      - name: Wait 2h before actual release
+        run: sleep 2h
       - name: 🚀 Create Release
         id: create_release
         uses: actions/create-release@v1

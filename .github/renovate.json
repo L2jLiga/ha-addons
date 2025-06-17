@@ -5,6 +5,7 @@
   "labels": ["dependencies", "no-stale"],
   "commitMessagePrefix": "⬆️",
   "commitMessageTopic": "{{depName}}",
+  "prBodyTemplate": "{{{header}}}{{{warnings}}}{{{notes}}}{{{changelogs}}}{{{footer}}}",
   "customManagers": [
     {
       "customType": "regex",
