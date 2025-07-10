@@ -19,7 +19,7 @@ COPY rootfs /
 RUN apk add --no-cache \
     nginx=1.26.3-r0 \
     npm=10.9.1-r0 \
-    icu-data-full=74.2-r0 && \
+    icu-data-full=74.2-r1 && \
     chmod -R 775 /var/lib/nginx
 
 # Install MatterBridge
