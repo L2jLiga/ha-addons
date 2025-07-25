@@ -24,7 +24,7 @@ RUN apk add --no-cache \
 
 # Install MatterBridge
 RUN npm install -g \
-    matterbridge@3.1.6 \
+    matterbridge@3.1.7 \
     matterbridge-zigbee2mqtt@2.7.0 \
     full-icu@1.5.0 && \
     npm cache clean --force
