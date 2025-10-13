@@ -31,7 +31,7 @@ jobs:
           fetch-depth: 0
           fetch-tags: true
       - name: 🚀 Setup NodeJS
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
       - name: 🚀 Make the script files executable
         run: chmod +x get-last-version.sh
       - id: version_and_changelog
